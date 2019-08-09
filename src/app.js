@@ -35,7 +35,8 @@ app.get('/about', (req, res) => {
 app.get('/help', (req, res) => {
     res.render('help', {
         title: 'Help Page',
-        message: "Enter your city at /weather to get local weather info"
+        message: "Enter your city at /weather to get local weather info",
+        name: 'Anthony Moss'
     })
 });
 
