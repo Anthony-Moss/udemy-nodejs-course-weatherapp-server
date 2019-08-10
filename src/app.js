@@ -40,12 +40,29 @@ app.get('/help', (req, res) => {
     })
 });
 
+
 app.get('/weather', (req, res) => {
     res.send({
         forecast: 'Sunny',
         location: 'Atlanta'
     })
 });
+
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        title: "404",
+        message: 'Help Page not Found',
+        name: 'Anthony Moss'
+    })
+});
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        message: 'Page not found',
+        name: 'Anthony Moss'
+    })
+})
 
 app.listen(3001, () => {
     console.log(`Server is running on port 3001`)
