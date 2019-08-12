@@ -58,6 +58,7 @@ app.get('/weather', (req, res) => {
             error: "You must provide an address"
         })
     }
+    
     res.send({
         forecast: 'Sunny',
         location: 'Atlanta',
