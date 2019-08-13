@@ -15,7 +15,7 @@ const request = require('request')
 // })
 
 const forecast = (long, lat, callback) => {
-    const url = `https://api.darksky.net/forecast/5ff7d44666836f47201faa8a389d0db4/${lat},${long}`
+    const url = `https://api.darksky.net/forecast/5ff7d44666836f47201faa8a389d0db4/${long},${lat}`
     request({ url, json: true}, (error, { body }) => {
         if (error) {
             callback('Unable to connect to weather service!')
@@ -23,8 +23,8 @@ const forecast = (long, lat, callback) => {
             callback('Unable to  find location!')
         } else {
             callback(undefined, {
+                summary: `${body.daily.data[0].summary} It is currently ${body.currently.temperature} degrees out. The high today is ${body.daily.data[0].temperatureHigh} with a low of ${body.daily.data[0].temperatureLow}. There is a ${body.currently.precipProbability}% chance of rain`,
                 // summary: body.daily.data[0].summary,
-                summary:`${body.daily.data[0].summary} It is currently ${body.currently.temperature} degrees out. There is a ${body.currently.precipProbability} % chance of rain`,
                 // temperature: body.currently.temperature,
                 // precipProb: body.currently.precipProbability,
             })
